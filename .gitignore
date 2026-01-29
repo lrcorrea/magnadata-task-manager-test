@@ -1,0 +1,8 @@
+# API
+bin/
+obj/
+*.db
+
+# WEB
+node_modules/
+.env
