@@ -1,5 +1,6 @@
 @use "./variables" as *;
 @use "./colors" as *;
+@use "./mixins" as *;
 
 * {
   box-sizing: border-box;
@@ -78,11 +79,11 @@ textarea {
   border: 1px solid $color-border;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba($color-black, 0.1);
-  padding: 2rem;
+  padding: 3rem 2rem;
   overflow-y: auto;
 
   .title {
-    font-size: 2.6rem;
+    font-size: 3rem;
     line-height: 2.5rem;
     color: $color-primary;
     color: $color-black;
@@ -92,7 +93,7 @@ textarea {
 
   .container-add-task-form {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 3rem;
     column-gap: 0.5rem;
 
     .add-task-form {
@@ -125,14 +126,31 @@ textarea {
         resize: none;
         background-color: transparent;
         font-family: $font-family;
+        color: $color-black;
         font-size: 1.8rem;
         transition:
-          border 0.3s,
-          box-shadow 0.3s;
+        border 0.3s,
+        color 0.3s,
+        box-shadow 0.3s;
 
         &:focus {
           border-color: $color-primary-hover;
           box-shadow: 0 4px 12px rgba($color-black, 0.1);
+        }
+        
+        @include placeholder {
+          font-family: $font-family;
+          color: $color-black;
+          font-size: 1.8rem;
+          transition: color 0.3s;
+        }
+
+        &.input-error {
+          border-color: $color-error;
+
+          @include placeholder {
+            color: $color-error;
+          }
         }
       }
     }
@@ -166,6 +184,14 @@ textarea {
     display: flex;
     width: 100%;
     margin-top: 3rem;
+    flex-wrap: wrap;
+
+    .tasks-loading {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .tasks-list {
       width: 100%;
@@ -188,6 +214,7 @@ textarea {
           border-radius: 0.2rem;
           border: 1px solid $color-primary;
           transition: background-color 0.3s;
+          flex-shrink: 0;
 
           svg {
             width: 1.5rem;
@@ -238,6 +265,15 @@ textarea {
           }
         }
       }
+    }
+
+    .empty-list {
+      width: 100%;
+      text-align: center;
+      font-size: 2.2rem;
+      color: $color-black;
+      margin-bottom: 1rem;
+      // margin-top: 2rem;
     }
   }
 }

@@ -4,11 +4,11 @@ import type { TaskFilter } from "~/types/filter";
 
 export function useTasks() {
   const tasks = ref<Task[]>([]);
-  const loading = ref(false);
+  const loading = ref(true);
   const error = ref<string | null>(null);
 
-  const loadTasks = async (filter?: TaskFilter) => {
-    loading.value = true;
+  const loadTasks = async (filter?: TaskFilter, hasLoading: boolean = true) => {
+    loading.value = hasLoading;
     error.value = null;
 
     try {
