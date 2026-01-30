@@ -81,7 +81,7 @@ dotnet run
 No terminal será exibido em algum lugar:
 
 ```bash
-Now listening on: http://localhost:5206
+Now listening on: http://localhost:8080
 ```
 
 ### 5. Acessar o Swagger
@@ -89,5 +89,5 @@ Now listening on: http://localhost:5206
 Acesse no navegador:
 
 ```bash
-http://localhost:5206/swagger
+http://localhost:8080/swagger
 ```

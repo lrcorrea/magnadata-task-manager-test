@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Api.DTOs;
 using TaskManager.Api.Services;
+using TaskManager.Api.Models;
 
 namespace TaskManager.Api.Controllers;
 
@@ -15,28 +16,30 @@ public class TasksController : ControllerBase
         _taskService = taskService;
     }
 
-    // [HttpGet]
-    // public async Task<IActionResult> Get()
-    // {
-    //     var tasks = await _taskService.GetAllAsync();
-    //     return Ok(tasks);
-    // }
-
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Get([FromQuery] bool? completed)
     {
-        var tasks = await _taskService.GetAsync(completed);
-        return Ok(tasks);
+        try
+        {
+            var tasks = await _taskService.GetAsync(completed);
+            return Ok(new ApiResponse<List<TaskItem>>(tasks));
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> Post(TaskCreateDto dto)
     {
         try
         {
             var task = await _taskService.CreateAsync(dto);
-            return CreatedAtAction(nameof(Get), new { id = task.Id }, task);
+            var response = new ApiResponse<TaskItem>(task);
+            return CreatedAtAction(nameof(Get), new { id = task.Id }, response);
         }
         catch (ArgumentException ex)
         {
@@ -45,12 +48,14 @@ public class TasksController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Put(int id, TaskUpdateDto dto)
     {
         try
         {
             var task = await _taskService.UpdateAsync(id, dto);
-            return Ok(task);
+            return Ok(new ApiResponse<TaskItem>(task));
         }
         catch (KeyNotFoundException ex)
         {
@@ -63,12 +68,14 @@ public class TasksController : ControllerBase
     }
 
     [HttpPatch("{id}/complete")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Complete(int id)
     {
         try
         {
             var task = await _taskService.CompleteAsync(id);
-            return Ok(task);
+            return Ok(new ApiResponse<TaskItem>(task));
         }
         catch (KeyNotFoundException ex)
         {
