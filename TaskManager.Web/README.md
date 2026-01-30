@@ -1,75 +1,66 @@
-# Nuxt Minimal Starter
+# Task Manager - WEB
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este é a parte do frontend do Task Manager, desenvolvida com **Nuxt 3**.
 
-## Setup
+## Tecnologias utilizadas
 
-Make sure to install dependencies:
+- Nuxt 3
+- TypeScript
+- SASS 
+
+---
+
+## Pré-requisitos
+
+### 1. Node.js (Versão v24.13.0)
+* **Windows (Instalador):** [Baixe aqui o Node.js v24.13.0](https://nodejs.org/dist/v24.13.0/node-v24.13.0-x64.msi)
+* **Linux (NVM):**
+  ```bash
+  nvm install 24.13.0 && nvm use 24.13.0
+  ```
+Caso não tenha nvm instalado execute o comando:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+ou
+```bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+## Como rodar o projeto
+### 1. Clonar o repositório
+
+Caso ainda não tenha feito o clone:
 
 ```bash
-# npm
+git clone git@github.com:lrcorrea/magnadata-task-manager-test.git
+```
+
+Abra a pasta da API
+
+```bash
+cd TaskManager.Web
+```
+
+### 2. Instalar dependências
+
+execute no seu terminal:
+
+```bash
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+### 3. Executar o Frontend
 
-Start the development server on `http://localhost:3000`:
+execute no seu terminal:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+### 3. Abra no navegador
 
-Build the application for production:
-
+No terminal vai aparecer o link com a porta
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+➜ Local:    http://localhost:3000/
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
