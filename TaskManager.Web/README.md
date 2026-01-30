@@ -36,7 +36,7 @@ Caso ainda não tenha feito o clone:
 git clone git@github.com:lrcorrea/magnadata-task-manager-test.git
 ```
 
-Abra a pasta da API
+Abra a pasta do Frontend
 
 ```bash
 cd TaskManager.Web
