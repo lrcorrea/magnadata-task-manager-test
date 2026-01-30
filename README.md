@@ -11,5 +11,5 @@ Este projeto foi desenvolvido como parte de uma avaliação técnica para a Magn
 
 ## Como rodar
 
-- Backend: veja em TaskManager.Api/README.md
-- Frontend: veja em TaskManager.Web/README.md
+- **Backend:** veja o [README do Backend](./TaskManager.Api/README.md)
+- **Frontend:** veja o [README do Frontend](./TaskManager.Web/README.md)
